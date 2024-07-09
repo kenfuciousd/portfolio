@@ -1,0 +1,42 @@
+Django_Project_Notes.txt
+
+
+React for the front end
+
+portfolio projects: 
+"Three body problem" Gravity Simulator? Maybe give the mass some momentum based on the avereage mouse/finger speed from the beginning of movement -> to -> 3 seconds? 
+Data analysis tool, (integrate math simulator?)
+
+
+
+initial notes built: 
+
+Step 1: Setting Up Your Environment
+1. Install Python and Django
+pip install django
+
+2. Set Up a Virtual Environment
+A virtual environment helps to manage dependencies for your project.
+
+python -m venv thisenv
+source thisenv/bin/activate
+
+3. Install Necessary Packages
+Install Django in your virtual environment:
+
+pip install django
+
+
+Step 2: Starting a Django Project
+Create a new Django project using the following command:
+
+django-admin startproject djangoserver
+cd djangoserver
+
+
+-=---
+connected to github at https://github.com/kenfuciousd/portfolio
+--
+
+python manage.py startapp mydjangoapp
+
