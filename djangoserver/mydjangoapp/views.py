@@ -6,4 +6,4 @@ from .models import Post
 
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'myapp/index.html', {'posts': posts})
+    return render(request, 'mydjangoapp/index.html', {'posts': posts})

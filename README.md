@@ -1,4 +1,4 @@
-# portfolio
+# Portfolio
 General Portfolio for fun and profit - build in Python / Django, and more. 
 
 to start up for localhost: 
@@ -11,4 +11,4 @@ source thisenv/bin/activate
 cd mydjangoserver
 python manage.py runserver 
 
-(defaults to localhost:8000 (?))
+(defaults to http://127.0.0.1:8000/)
