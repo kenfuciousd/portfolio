@@ -40,3 +40,67 @@ connected to github at https://github.com/kenfuciousd/portfolio
 
 python manage.py startapp mydjangoapp
 
+
+... http://localhost:8000
+
+http://127.0.0.1:8000/admin
+
+
+---
+
+Pt 2. 
+"anonymous" delivery app
+
+users assigned tokens / key
+
+User Database:
+	Store information about users (couriers and clients).
+	Include fields like user ID, name, contact details, and role (courier or client).
+
+Package Database:
+	Store information about packages.
+	Include fields like package ID, description, weight, dimensions, and status.
+
+Delivery Database:
+	Store information about deliveries.
+	Include fields like delivery ID, package ID, courier ID, client ID, pickup location, drop-off location, and delivery status.
+
+Network Segmentation -- will need to impliment this later. 
+	Micro-segmentation:
+		Use virtual private clouds (VPCs) and network access control lists (ACLs) to segment the network.
+		BASH example:
+			# Example: AWS VPC configuration
+			aws ec2 create-vpc --cidr-block 10.0.0.0/16
+			aws ec2 create-subnet --vpc-id vpc-12345 --cidr-block 10.0.1.0/24
+			aws ec2 create-security-group --group-name app-sg --description "Application Security Group" --vpc-id vpc-12345
+			aws ec2 authorize-security-group-ingress --group-id sg-12345 --protocol tcp --port 80 --cidr 10.0.0.0/16
+
+Device Security
+	Endpoint Protection:
+
+		Enforce device compliance checks using MDM solutions.
+		Use endpoint detection and response (EDR) tools for continuous monitoring.
+		BASH: 
+			# Example: Intune configuration for device compliance
+			az intune device configuration create --name "Device Compliance Policy" --platform ios --os
+
+Application Security
+	Secure Coding Practices:
+		Follow secure coding guidelines and perform regular code reviews.
+		Use Django’s security features, such as CSRF protection, XSS protection, and SQL injection prevention.
+
+
+Vulnerability Assessments:
+	Perform regular vulnerability assessments using tools like OWASP ZAP or Nessus.
+	Fix identified vulnerabilities promptly.
+	BASH 
+		# Example: Running OWASP ZAP
+			zap-cli start
+			zap-cli open-url http://your-app-url
+			zap-cli spider http://your-app-url
+			zap-cli active-scan http://your-app-url
+
+Data Protection
+	Encryption:
+		Encrypt data at rest using database encryption.
+		Encrypt data in transit using HTTPS/TLS.
