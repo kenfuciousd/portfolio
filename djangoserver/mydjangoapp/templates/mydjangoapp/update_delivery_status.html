@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Delivery Status</title>
+</head>
+<body>
+    <h1>Update Delivery Status</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="delivery_status">Delivery Status:</label>
+        <input type="text" name="delivery_status" id="delivery_status" value="{{ delivery.delivery_status }}"><br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

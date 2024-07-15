@@ -7,7 +7,30 @@
     <h1>Create Delivery</h1>
     <form method="post">
         {% csrf_token %}
-        <!-- Form fields for creating a delivery -->
+        <label for="package_id">Package:</label>
+        <select name="package_id" id="package_id">
+            {% for package in packages %}
+                <option value="{{ package.package_id }}">{{ package.description }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="courier_id">Courier:</label>
+        <select name="courier_id" id="courier_id">
+            {% for courier in couriers %}
+                <option value="{{ courier.id }}">{{ courier.username }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="client_id">Client:</label>
+        <select name="client_id" id="client_id">
+            {% for client in clients %}
+                <option value="{{ client.id }}">{{ client.username }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="pickup_location">Pickup Location:</label>
+        <input type="text" name="pickup_location" id="pickup_location"><br>
+        <label for="dropoff_location">Dropoff Location:</label>
+        <input type="text" name="dropoff_location" id="dropoff_location"><br>
+        <label for="delivery_status">Delivery Status:</label>
+        <input type="text" name="delivery_status" id="delivery_status"><br>
         <button type="submit">Create Delivery</button>
     </form>
 </body>

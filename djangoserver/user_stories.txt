@@ -1,1 +1,54 @@
-user_stories.txt
+"""Basic Use Cases and Notes; loose requirements doc"""
+
+Case: As a Customer, I want to be able to place an order at a website, (like Leafly), and have a courier deliver it to me. 
+	The basic functionality, customer-side;
+	basic transactional behavior
+
+Case: As a Courier, I want to receive an order, and easily deliver it to recieve frunds. 
+	The second half of the equation. The functional heart of this app. delivery+safety=payment
+	basic functional behavior - a courier side to the app to give them the info they need
+	destination of pickup, identifying information, 
+
+Case: As a Customer, I want to be anonymous
+	which means other forms of ID are necessary if we want that level of interaction, like a passphrase
+	we'd need a way to bill, which means legal info. This refers to the purchase -> delivery
+	So the anon part happens from the point the store preps the product, to the moment the transaction is closed
+
+Case: As a Courior, I want to remain anonymous
+	zero trust passphrases, keys, barcodes, an authenticator app, etc.. are options
+
+Case: As a Courior, I want to receive tips
+
+
+Case: As a user of the app, I want my data to be safe. 
+	PCI-DSS
+
+Case: As a user of the app, I want transactional data that is easy to review
+	user account history
+
+Case: As a user of this app, I want to be able to log in, and the app will know my role and give me permissions for it
+	account management
+
+Case: As an administrator, I want to have access to an admin page allowing full access
+	help desk administration
+
+Case: As an administrator, I want to be able to pull pertinent reports
+	$$ and revenue, anonymized user statistics
+
+Case: As an administrator, I want to follow the principles of Least Privilege in assigning access and roles
+	site admin, help desk, auditor/financial, QA (?)
+
+Case: As a courier, I want map integration
+	initially could probably just pull up google map api, but eventually production level code could do it internally-ish
+
+Case: As an infrastructure engineer, I want a stable and secure hosted environment
+
+Case: As a Customer, I want basic account access and functionality
+	Account creation, handling of security and tokens, account updates, account deletion
+	Account history and accounting, a reference number (that help desk can reference) for issues with courier
+
+Case: As a courier, I want a robust support system for the delivery
+	procedures and contingencies for all of the random scammy ways people interact with sites. 
+	help desk available to courier which may be different than customers(?)
+	app support: help/chat, reporting (delivery issues, traffic incidents, etc)
+	

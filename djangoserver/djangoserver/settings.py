@@ -107,6 +107,25 @@ AUTHENTICATION_BACKENDS = [
     # REVIEW this
 ]
 
+#Secure Protocols
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'your_db_name',
+#        'USER': 'your_db_user',
+#        'PASSWORD': 'your_db_password',
+#        'HOST': 'your_db_host',
+#        'PORT': 'your_db_port',
+#        'OPTIONS': {
+#            'sslmode': 'require',
+#        },
+#    }
+#}
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 

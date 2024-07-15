@@ -1,3 +1,4 @@
+<!-- package_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +9,20 @@
     <p>Weight: {{ package.weight }}</p>
     <p>Dimensions: {{ package.dimensions }}</p>
     <p>Status: {{ package.status }}</p>
+
+    <h2>Deliveries</h2>
+    <ul>
+        {% for delivery in deliveries %}
+            <li>
+                Courier: {{ delivery.courier.name }} <br>
+                Client: {{ delivery.client.name }} <br>
+                Pickup: {{ delivery.pickup_location }} <br>
+                Dropoff: {{ delivery.dropoff_location }} <br>
+                Status: {{ delivery.delivery_status }} <br>
+                <a href="{% url 'update_delivery_status' delivery.delivery_id %}">Update Status</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_delivery' %}">Create New Delivery</a>
 </body>
 </html>

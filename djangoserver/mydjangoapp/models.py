@@ -43,6 +43,7 @@ class Package(models.Model):
     weight = models.FloatField()
     dimensions = models.CharField(max_length=100)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='packages')
 
     def __str__(self):
         return f"Package {self.package_id}: {self.description}"

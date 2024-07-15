@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', views.index, name='index'),    
     path('', include('mydjangoapp.urls')),
-    path('view_packages/', views.package_list, name='package_list'),
-    path('packages/<int:package_id>/', views.package_detail, name='package_detail'),
-    path('create_delivery/', views.create_delivery, name='create_delivery'),
+#    path('view_packages/', views.package_list, name='package_list'),
+#    path('packages/<int:package_id>/', views.package_detail, name='package_detail'),
+#    path('create_delivery/', views.create_delivery, name='create_delivery'),
 ]
