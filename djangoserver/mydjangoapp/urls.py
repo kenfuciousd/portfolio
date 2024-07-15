@@ -6,4 +6,7 @@ urlpatterns = [
     path('packages/<int:package_id>/', views.package_detail, name='package_detail'),
     path('create_delivery/', views.create_delivery, name='create_delivery'),
     path('update_delivery_status/<int:delivery_id>/', views.update_delivery_status, name='update_delivery_status'),
+    path('register/', views.register, name='register'),
+    path('', views.home, name='home'),  # Add your home view or any other view    
+    path('login/', views.basic_auth_login, name='basic_auth_login'),
 ]

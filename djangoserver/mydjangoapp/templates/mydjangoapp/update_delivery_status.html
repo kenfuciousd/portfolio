@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Update Delivery Status</title>
-</head>
-<body>
-    <h1>Update Delivery Status</h1>
-    <form method="post">
-        {% csrf_token %}
+{% extends 'myapp/base.html' %}
+
+{% block title %}Update Delivery Status{% endblock %}
+
+{% block content %}
+<h1>Update Delivery Status</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
         <label for="delivery_status">Delivery Status:</label>
-        <input type="text" name="delivery_status" id="delivery_status" value="{{ delivery.delivery_status }}"><br>
-        <button type="submit">Update</button>
-    </form>
-</body>
-</html>
+        <input type="text" name="delivery_status" id="delivery_status" class="form-control" value="{{ delivery.delivery_status }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}

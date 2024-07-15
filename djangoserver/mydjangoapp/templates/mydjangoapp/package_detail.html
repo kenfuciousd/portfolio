@@ -1,28 +1,25 @@
-<!-- package_detail.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Package Detail</title>
-</head>
-<body>
-    <h1>{{ package.description }}</h1>
-    <p>Weight: {{ package.weight }}</p>
-    <p>Dimensions: {{ package.dimensions }}</p>
-    <p>Status: {{ package.status }}</p>
+{% extends 'myapp/base.html' %}
 
-    <h2>Deliveries</h2>
-    <ul>
-        {% for delivery in deliveries %}
-            <li>
-                Courier: {{ delivery.courier.name }} <br>
-                Client: {{ delivery.client.name }} <br>
-                Pickup: {{ delivery.pickup_location }} <br>
-                Dropoff: {{ delivery.dropoff_location }} <br>
-                Status: {{ delivery.delivery_status }} <br>
-                <a href="{% url 'update_delivery_status' delivery.delivery_id %}">Update Status</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'create_delivery' %}">Create New Delivery</a>
-</body>
-</html>
+{% block title %}Package Detail{% endblock %}
+
+{% block content %}
+<h1>{{ package.description }}</h1>
+<p>Weight: {{ package.weight }} kg</p>
+<p>Dimensions: {{ package.dimensions }}</p>
+<p>Status: {{ package.status }}</p>
+
+<h2>Deliveries</h2>
+<ul class="list-group">
+    {% for delivery in deliveries %}
+        <li class="list-group-item">
+            <strong>Courier:</strong> {{ delivery.courier.username }}<br>
+            <strong>Client:</strong> {{ delivery.client.username }}<br>
+            <strong>Pickup:</strong> {{ delivery.pickup_location }}<br>
+            <strong>Dropoff:</strong> {{ delivery.dropoff_location }}<br>
+            <strong>Status:</strong> {{ delivery.delivery_status }}<br>
+            <a href="{% url 'update_delivery_status' delivery.delivery_id %}" class="btn btn-primary btn-sm">Update Status</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_delivery' %}" class="btn btn-primary">Create New Delivery</a>
+{% endblock %}

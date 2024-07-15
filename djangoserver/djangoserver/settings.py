@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sslserver', 
     'mydjangoapp',
 ]
+# instead of sslserver, we'd use a full AAA server actually
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,6 +84,10 @@ DATABASES = {
 }
 
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -103,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # authentication backend
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'your_custom_auth_backend.MultiFactorBackend',
+    'mydjangoapp.auth_backends.BasicAuthBackend',
     # REVIEW this
 ]
 

@@ -45,6 +45,33 @@ python manage.py startapp mydjangoapp
 
 http://127.0.0.1:8000/admin
 
+other manage.py commands
+python manage.py collectstatic # updating static files like CSS d
+
+python manage.py runsslserver
+
+
+SSL Server updates
+Install django-sslserver:
+	pip install django-sslserver
+
+Add sslserver to Your Installed Apps:
+	In your settings.py, add sslserver to the INSTALLED_APPS list:
+INSTALLED_APPS = [
+    ...
+    'sslserver',
+]
+
+Run the Development Server with HTTPS:
+	Start the development server with the runsslserver command:
+python manage.py runsslserver
+You can now access your application over HTTPS at https://127.0.0.1:8000/.
+
+
+superuser
+admin
+@dm1n1str4t0r
+
 
 ---
 

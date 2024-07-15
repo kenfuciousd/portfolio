@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Package List</title>
-</head>
-<body>
-    <h1>Packages</h1>
-    <ul>
-        {% for package in packages %}
-            <li><a href="{% url 'package_detail' package.package_id %}">{{ package.description }}</a></li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block title %}Package List{% endblock %}
+
+{% block content %}
+<h1>Packages</h1>
+<ul class="list-group">
+    {% for package in packages %}
+        <li class="list-group-item">
+            <a href="{% url 'package_detail' package.package_id %}">{{ package.description }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

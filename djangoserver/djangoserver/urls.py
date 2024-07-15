@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', views.index, name='index'),    
+    path('accounts/', include('django.contrib.auth.urls')),  # Add this line
     path('', include('mydjangoapp.urls')),
 #    path('view_packages/', views.package_list, name='package_list'),
 #    path('packages/<int:package_id>/', views.package_detail, name='package_detail'),

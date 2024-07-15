@@ -1,9 +1,11 @@
 # views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Package, Delivery, User, Post
+from django.http import HttpResponseForbidden
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import user_passes_test, login_required
-from django.http import HttpResponseForbidden
+from django.contrib.auth import login
+from .forms import UserRegistrationForm
 import logging
 
 
@@ -83,11 +85,37 @@ def update_delivery_status(request, delivery_id):
 
     return render(request, 'myapp/update_delivery_status.html', {'delivery': delivery})
 
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')  # Redirect to a home page or any other page
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})
 
-@permission_required('myapp.view_package', raise_exception=True)
-def package_detail(request, package_id):
+@login_required
+def home(request):
+    return render(request, 'index.html')
+
+def basic_auth_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            return HttpResponse('Invalid login credentials')
+    return render(request, 'basic_auth_login.html')
+
+#@permission_required('myapp.view_package', raise_exception=True)
+#def package_detail(request, package_id):
     # Your view logic
-    pass
+#    pass
 
 #Cross Site Scripting Protection 
 #@csrf_protect
