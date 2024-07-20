@@ -22,11 +22,11 @@ def index(request):
 @login_required
 def package_list(request):
     packages = Package.objects.all()
-    return render(request, 'myapp/package_list.html', {'packages': packages})
+    return render(request, 'mydjangoapp/package_list.html', {'packages': packages})
 
 #def package_detail(request, package_id):
 #    package = get_object_or_404(Package, package_id=package_id)
-#    return render(request, 'myapp/package_detail.html', {'package': package})
+#    return render(request, 'mydjangoapp/package_detail.html', {'package': package})
 
 @login_required
 def package_detail(request, package_id):
@@ -34,7 +34,7 @@ def package_detail(request, package_id):
     if not request.user.is_authenticated or (request.user.role == 'client' and package.client != request.user):
         return HttpResponseForbidden("You are not allowed to view this package.")
     deliveries = Delivery.objects.filter(package=package)
-    return render(request, 'myapp/package_detail.html', {'package': package, 'deliveries': deliveries})
+    return render(request, 'mydjangoapp/package_detail.html', {'package': package, 'deliveries': deliveries})
 
 @login_required
 @user_passes_test(is_client)
@@ -42,15 +42,15 @@ def package_detail(request, package_id):
 def create_delivery(request):
     if request.method == 'POST':
         package_id = request.POST.get('package_id')
-        courier_id = request.POST.get('courier_id')
-        client_id = request.POST.get('client_id')
+        courier = request.POST.get('courier')
+        client = request.POST.get('client') # user_id?
         pickup_location = request.POST.get('pickup_location')
         dropoff_location = request.POST.get('dropoff_location')
         delivery_status = request.POST.get('delivery_status')
 
         package = get_object_or_404(Package, package_id=package_id)
-        courier = get_object_or_404(User, user_id=courier_id)
-        client = get_object_or_404(User, user_id=client_id)
+        courier = get_object_or_404(User, user_id=courier)
+        client = get_object_or_404(User, user_id=client)
 
         delivery = Delivery.objects.create(
             package=package,
@@ -67,7 +67,7 @@ def create_delivery(request):
     packages = Package.objects.all()
     couriers = User.objects.filter(role='courier')
     clients = User.objects.filter(role='client')
-    return render(request, 'myapp/create_delivery.html', {
+    return render(request, 'mydjangoapp/create_delivery.html', {
         'packages': packages,
         'couriers': couriers,
         'clients': clients,
@@ -83,7 +83,7 @@ def update_delivery_status(request, delivery_id):
         delivery.save()
         return redirect('package_detail', package_id=delivery.package.package_id)
 
-    return render(request, 'myapp/update_delivery_status.html', {'delivery': delivery})
+    return render(request, 'mydjangoapp/update_delivery_status.html', {'delivery': delivery})
 
 def register(request):
     if request.method == 'POST':
@@ -98,7 +98,11 @@ def register(request):
 
 @login_required
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'mydjangoapp/index.html')
+
+def index(request):
+    posts = Post.objects.all()
+    return render(request, 'mydjangoapp/index.html', {'posts': posts})
 
 def basic_auth_login(request):
     if request.method == 'POST':
@@ -112,7 +116,7 @@ def basic_auth_login(request):
             return HttpResponse('Invalid login credentials')
     return render(request, 'basic_auth_login.html')
 
-#@permission_required('myapp.view_package', raise_exception=True)
+#@permission_required('mydjangoapp.view_package', raise_exception=True)
 #def package_detail(request, package_id):
     # Your view logic
 #    pass

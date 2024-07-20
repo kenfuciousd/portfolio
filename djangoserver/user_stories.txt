@@ -20,35 +20,38 @@ Case: As a Courior, I want to remain anonymous
 Case: As a Courior, I want to receive tips
 
 
-Case: As a user of the app, I want my data to be safe. 
+Case: As a User of the app, I want my data to be safe. 
 	PCI-DSS
 
-Case: As a user of the app, I want transactional data that is easy to review
+Case: As a User of the app, I want transactional data that is easy to review
 	user account history
 
-Case: As a user of this app, I want to be able to log in, and the app will know my role and give me permissions for it
+Case: As a User of this app, I want to be able to log in, and the app will know my role and give me permissions for it
 	account management
 
-Case: As an administrator, I want to have access to an admin page allowing full access
+Case: As an Administrator, I want to have access to an admin page allowing full access
 	help desk administration
 
-Case: As an administrator, I want to be able to pull pertinent reports
+Case: As an Administrator, I want to be able to pull pertinent reports
 	$$ and revenue, anonymized user statistics
 
-Case: As an administrator, I want to follow the principles of Least Privilege in assigning access and roles
+Case: As an Administrator, I want to follow the principles of Least Privilege in assigning access and roles
 	site admin, help desk, auditor/financial, QA (?)
 
-Case: As a courier, I want map integration
+Case: As a Courier, I want map integration
 	initially could probably just pull up google map api, but eventually production level code could do it internally-ish
 
-Case: As an infrastructure engineer, I want a stable and secure hosted environment
+Case: As an Infrastructure Engineer, I want a stable and secure hosted environment
 
 Case: As a Customer, I want basic account access and functionality
 	Account creation, handling of security and tokens, account updates, account deletion
 	Account history and accounting, a reference number (that help desk can reference) for issues with courier
 
-Case: As a courier, I want a robust support system for the delivery
+Case: As a Courier, I want a robust support system for the delivery
 	procedures and contingencies for all of the random scammy ways people interact with sites. 
 	help desk available to courier which may be different than customers(?)
 	app support: help/chat, reporting (delivery issues, traffic incidents, etc)
 	
+Case: As an Auditor, I want good record keeping
+
+Case: As an Auditor, and as an Engineer, I want to ensure all private and secured data is properly handled 

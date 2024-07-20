@@ -68,7 +68,8 @@ python manage.py runsslserver
 You can now access your application over HTTPS at https://127.0.0.1:8000/.
 
 
-superuser
+python manage.py createsuperuser
+superuser:
 admin
 @dm1n1str4t0r
 
@@ -76,7 +77,7 @@ admin
 ---
 
 Pt 2. 
-"anonymous" delivery app
+"anonymous" delivery app - general gpt suggestions and notes
 
 users assigned tokens / key
 
@@ -165,3 +166,48 @@ Incident Response:
 			    response = ec2.describe_instances()
 			    # Your incident response logic
 			    return response
+---- 
+Next section of notes
+
+Next steps - 
+	Database solidification and layout, correlation with web front end. 
+		\ think through the model. Build some documentation for it. solidify layout
+		\ User roles / processes
+		\ item/package processes. 
+		\ build with zero trust and anonymity in mind. (gotta review here)
+	build "User account" area.
+		\ build courier specific page. they get alerts when an order is placed, asking if they wnat to deliver
+		\ Security mechanisms. MFA type ideas: maybe passphrases, generated QR codes with public keys, or 
+			\ built in zero trust methods like generating passphrases/One-Time-Token/Pins 
+			\ ... these security methods should be easy-access, push button affairs with links explaining in simple terms
+	build a 'marketplace'
+		\ where the vendor's products are available. 
+		\ build a 'vendor' area for sellers. It's their job to allow orders and processing, they create a request
+			\ which is sent to the api to build a package for delivery 		
+		\ the 'vendor' specific page should be able to change, add, update, delete, bulk load,
+			\ also turn off / on availability for items or whole store. "vendor view" vs external "store view"?
+
+
+User roles / process workflow:
+Vendor -> place items on Marketplace, prepare packages for delivery
+Customer -> view Market, create orders/deliveries, accept deliveries and confirm
+Courier -> view available deliveries, select them, confirm pickup, confirm delivery + evidence (zero trust methods..)
+Admin -> review transactions, administrate data (refunds, help, disputes, etc)
+
+
+Database layout
+	\User
+		\id (key), info for customer and courier - all private data handled same
+	\Package     <-- the "items" available in the shop (? maybe this needs to spread its functions out to other spots)
+		\id -- 
+	\Delivery    <-- an "Order" - placed by the customer User, should be open to api calls with proper validation
+		\ this is kinda the audit database actually.. 
+	\Market      <-- the catalog, the layout options, ordering, etc. the shop in between customer and vendor
+		\the 'shop' page, populated with packages from vendors. 
+	\Vendor      <-- The seller. have business id as key? or even anonymous options here too with random oid. 
+
+-- 
+after updating the database model
+python manage.py makemigrations
+python manage.py migrate
+

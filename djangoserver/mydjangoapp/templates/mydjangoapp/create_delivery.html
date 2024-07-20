@@ -1,4 +1,4 @@
-{% extends 'myapp/base.html' %}
+{% extends 'mydjangoapp/base.html' %}
 
 {% block title %}Create Delivery{% endblock %}
 
@@ -23,8 +23,8 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="client_id">Client:</label>
-        <select name="client_id" id="client_id" class="form-control">
+        <label for="client">Client:</label>
+        <select name="client" id="client" class="form-control">
             {% for client in clients %}
                 <option value="{{ client.id }}">{{ client.username }}</option>
             {% endfor %}
