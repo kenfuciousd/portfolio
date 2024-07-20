@@ -10,10 +10,10 @@ import logging
 
 
 def is_courier(user):
-    return user.role == 'courier'
+    return hasattr(user, 'role') and user.role == 'courier'
 
 def is_client(user):
-    return user.role == 'client'
+    return hasattr(user, 'role') and user.role == 'client'
 
 def index(request):
     posts = Post.objects.all()

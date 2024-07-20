@@ -26,7 +26,7 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)  # Pseudonym
     contact = models.CharField(max_length=32)  # phone or instant message id?
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, blank=True, null=True)
     pubk = models.CharField(max_length=4096)  # pub key; for now, Check Diffie Helman v14 encryption later
     prik = models.CharField(max_length=4096)  # private key; for now, Check Diffie Helman v14 encryption later
     pymnt = models.CharField(max_length=32)  # maybe a hashed dict where the info is scrambled but retrievable?
@@ -35,9 +35,29 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-#abstract user - for role based permissions in views - necessary to break out role assignment? 
-#class User(AbstractUser):
-#    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+class CustomUser(AbstractUser):
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, blank=True, null=True)
+    pubk = models.CharField(max_length=4096)
+    prik = models.CharField(max_length=4096)
+    pymnt = models.CharField(max_length=32)
+    vehicle = models.CharField(max_length=80)
+
+    # Override the reverse accessors to avoid conflicts
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='customuser_set',
+        related_query_name='customuser',
+        blank=True,
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='customuser_set',
+        related_query_name='customuser',
+        blank=True,
+    )
+
+    def __str__(self):
+        return self.username
 
 #marketplace..... these are the packages built to deliver. 
 class Package(models.Model):
