@@ -26,3 +26,6 @@ urlpatterns = [
 #    path('packages/<int:package_id>/', views.package_detail, name='package_detail'),
 #    path('create_delivery/', views.create_delivery, name='create_delivery'),
 ]
+
+#if settings.DEBUG:
+#    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

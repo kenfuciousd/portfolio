@@ -186,13 +186,15 @@ Next steps -
 			\ which is sent to the api to build a package for delivery 		
 		\ the 'vendor' specific page should be able to change, add, update, delete, bulk load,
 			\ also turn off / on availability for items or whole store. "vendor view" vs external "store view"?
-
+	storefront
+	build admin account area
 
 User roles / process workflow:
-Vendor -> place items on Marketplace, prepare packages for delivery
-Customer -> view Market, create orders/deliveries, accept deliveries and confirm
-Courier -> view available deliveries, select them, confirm pickup, confirm delivery + evidence (zero trust methods..)
-Admin -> review transactions, administrate data (refunds, help, disputes, etc)
+	Vendor -> place items on Marketplace, prepare packages for delivery
+	Customer -> view Market, create orders/deliveries, accept deliveries and confirm
+	Courier -> view available deliveries, select them, confirm pickup, confirm delivery + evidence (zero trust methods..)
+	Admin -> review transactions, administrate data (refunds, help, disputes, etc)
+	Blog -> blog poster
 
 
 Database layout
@@ -211,3 +213,15 @@ after updating the database model
 python manage.py makemigrations
 python manage.py migrate
 
+----
+
+key exchange - the Diffe Helmann algorithm
+https://github.com/Descent098/Diffie-Hellman
+ - TLDR: generates common secrets with two users each using their own private/public key, such that
+g^(a) mod p = A
+g^(b) mod p = B
+B^a mod p = common secret
+A^b mod p = common secret
+The common secret is then used to encrypt the data; each user should be able to decrypt it from that. 
+
+python manage.py collectstatic

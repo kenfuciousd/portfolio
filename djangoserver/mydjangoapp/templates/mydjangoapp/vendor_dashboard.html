@@ -1,0 +1,15 @@
+{% extends 'mydjangoapp/base.html' %}
+
+{% block title %}Vendor Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Vendor Dashboard</h1>
+    <h2>Your Packages</h2>
+    <ul>
+        {% for package in packages %}
+            <li>{{ package.description }} - {{ package.status }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

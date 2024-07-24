@@ -1,0 +1,15 @@
+{% extends 'mydjangoapp/base.html' %}
+
+{% block title %}Help Desk{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Help Desk</h1>
+    <h2>Transactions</h2>
+    <ul>
+        {% for transaction in transactions %}
+            <li>{{ transaction.package.description }} - {{ transaction.delivery_status }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
